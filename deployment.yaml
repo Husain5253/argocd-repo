@@ -15,12 +15,6 @@ spec:
       containers:
         - name: nginx
           image: nginx
-          volumeMounts:
-            - name: vol-mount
-              mountPath: /husain
-      volumes:
-        - name: vol-mount
-          hostpath: /root/volume-mount
 
 ---
 apiVersion: v1
