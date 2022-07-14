@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: test
+  template:
+    metadata:
+      labels:
+        env: test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          volumeMounts:
+            - name: vol-mount
+              mountPath: /husain
+      volumes:
+        - name: vol-mount
+          hostpath: /root/volume-mount
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    env: test
