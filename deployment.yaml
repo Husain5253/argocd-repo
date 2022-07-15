@@ -36,27 +36,6 @@ spec:
             secretName: argocd-secret
             
 ---
-
-apiVersion: apps/v1
-kind: StatefulSets
-metadata:
-  namespace: argocd-demo
-  name: argocd-statefulset
-spec:
-   replicas: 5
-   selector:
-     matchLabels:
-       env: test
-   template:
-      metadata:
-        labels:
-          env: test
-   spec:
-      containers:
-        - name: nginx
-          image: nginx
-
----
 apiVersion: v1
 kind: Service
 metadata:
