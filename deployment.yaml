@@ -14,7 +14,7 @@ metadata:
   namespace: argocd-demo
   name: argocd-deployment
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       env: test
@@ -42,7 +42,7 @@ metadata:
   namespace: argocd-demo
   name: argocd-statefulset
 spec:
-  replicas: 5
+  replicas: 1
   serviceName: "argocd-service"
   selector:
     matchLabels:
