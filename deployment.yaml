@@ -15,6 +15,14 @@ spec:
       containers:
         - name: nginx
           image: nginx
+          volumeMounts:
+            - name: my-secret
+              mountPath: "/etc/husain-secret"
+              readOny: true
+      volumes:
+        - name: my-secret
+          secret:
+            secretName: argocd-secret          
 
 ---
 apiVersion: v1
@@ -28,3 +36,13 @@ spec:
       targetPort: 80
   selector:
     env: test
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-secret
+type: Opaque
+data:
+  username: aHVzYWlu
+  password: SHVzYWluQDEyMw==
