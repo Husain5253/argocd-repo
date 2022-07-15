@@ -14,7 +14,7 @@ metadata:
   namespace: argocd-demo
   name: argocd-deployment
 spec:
-  replicas: 1
+  replicas: 7
   selector:
     matchLabels:
       env: test
@@ -34,6 +34,27 @@ spec:
         - name: mount-sc
           secret:
             secretName: argocd-secret
+            
+---
+
+apiVersion: apps/v1
+kind: StatefulSets
+metadata:
+  namespace: argocd-demo
+  name: argocd-statefulset
+spec:
+   replicas: 5
+   selector:
+     matchLabels:
+       env: test
+   template:
+      metadata:
+        labels:
+          env: test
+   spec:
+      containers:
+        - name: nginx
+          image: nginx
 
 ---
 apiVersion: v1
