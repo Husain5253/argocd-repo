@@ -34,7 +34,32 @@ spec:
         - name: mount-sc
           secret:
             secretName: argocd-secret
-            
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: argocd-demo
+  name: argocd-statefulset
+spec:
+   replicas: 5
+   serviceName: "argocd-service"
+   selector:
+     matchLabels:
+       env: test
+   template:
+      metadata:
+        labels:
+          env: test
+   spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - name: http
+              port: 80
+
+
 ---
 apiVersion: v1
 kind: Service
