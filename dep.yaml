@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: argocd-dep
+  name: argocd-dep
+  labels:
+    env: test
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      env: test
+  template:
+    metadata:
+      labels:
+        env: test
+    spec:
+      containers:
+        - name: alpine
+          image: alpine
