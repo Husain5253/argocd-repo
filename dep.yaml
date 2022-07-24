@@ -6,7 +6,7 @@ metadata:
   labels:
     env: test
 spec:
-  replicas: 5
+  replicas: 10
   selector:
     matchLabels:
       env: test
@@ -16,5 +16,5 @@ spec:
         env: test
     spec:
       containers:
-        - name: alpine
-          image: alpine
+        - name: nginx
+          image: nginx
