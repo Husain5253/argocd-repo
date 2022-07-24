@@ -1,8 +1,8 @@
 apiVersion: apps/v1
-kind: DeamonSet
+kind: DaemonSet
 metadata:
   namespace: argocd-dep
-  name: argocd-deamonset
+  name: argocd-daemonset
   labels:
     env: test
 spec:
