@@ -6,7 +6,7 @@ metadata:
   labels:
     env: test
 spec:
-  replicas: 3
+  replicas: 25
   selector:
     matchLabels:
       env: test
